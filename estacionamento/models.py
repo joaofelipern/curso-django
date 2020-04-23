@@ -57,3 +57,22 @@ class Parametro(models.Model):
 
     class Meta:
         verbose_name = 'Parâmetro'    
+
+class Mensalista(models.Model):
+    veiculo = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
+    inicio = models.DateField()
+    valor_mensal = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return self.veiculo.placa
+
+class MovMensalista(models.Model):
+    mensalista = models.ForeignKey(Mensalista, on_delete=models.CASCADE)
+    data_pagamento = models.DateField()
+    total = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return str(self.mensalista)
+
+    class Meta:
+        verbose_name = 'Movimento Mensalista'            

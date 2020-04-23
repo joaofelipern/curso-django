@@ -1,9 +1,21 @@
 from django.contrib import admin
-from .models import Marca, Pessoa, Veiculo, MovRotativo, Parametro
+from .models import Marca, Pessoa, Veiculo, MovRotativo, Parametro, Mensalista, MovMensalista
 
 admin.site.register(Marca)
 admin.site.register(Pessoa)
 admin.site.register(Veiculo)
+
+
+class MovMensalistaAdmin(admin.ModelAdmin):
+    list_display = ('mensalista', 'data_pagamento')
+
+admin.site.register(MovMensalista, MovMensalistaAdmin)
+
+
+class MensalistaAdmin(admin.ModelAdmin):
+    list_display = ('veiculo', 'inicio', 'valor_mensal')
+
+admin.site.register(Mensalista, MensalistaAdmin)
 
 
 

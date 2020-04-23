@@ -5,6 +5,7 @@ from django.conf import settings
 admin.autodiscover()
 
 import hello.views
+import estacionamento
 
 # To add a new path, first import the app:
 # import blog
@@ -19,7 +20,8 @@ urlpatterns = [
     # path("db/", hello.views.db, name="db"),
     # path("admin/", admin.site.urls),
     
-    path("", admin.site.urls),  # manda pro admin
+    path('estacionamento/', include('estacionamento.urls')),
+    path("admin/", admin.site.urls),  # manda pro admin
 ]
 
 

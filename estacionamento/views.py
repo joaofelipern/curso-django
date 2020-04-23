@@ -4,6 +4,7 @@ from .forms import MovRotativoForm
 
 
 def adicionar_movimento_rotativo(request):
+    app_list = {'app_label': 'estacionamento'}
     if request.method == 'POST':
         form = MovRotativoForm(request.POST)
         if form.is_valid():
@@ -12,4 +13,4 @@ def adicionar_movimento_rotativo(request):
     else:
         form = MovRotativoForm()
     print (dir(form))
-    return render(request, 'change_form.html', locals())
+    return render(request, 'form.html', locals())

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "hello",
+    "estacionamento",
 ]
 
 MIDDLEWARE = [
@@ -111,8 +112,8 @@ USE_TZ = True
 
 
 #
-SITE_TITLE = 'Controle de estacionamento'
-SITE_HEADER = 'Controle de estacionamento'
+SITE_TITLE = 'Controle de Estacionamento'
+SITE_HEADER = 'Controle de Estacionamento'
 INDEX_TITLE = 'Área Administrativa'
 
 

@@ -5,5 +5,5 @@ from django.conf import settings
 from estacionamento import views
 
 urlpatterns = [
-    path('adicionar_movimento_rotativo', views.adicionar_movimento_rotativo, name="adicionar_movimento_rotativo"),
+    # path('adicionar_movimento_rotativo', views.adicionar_movimento_rotativo, name="adicionar_movimento_rotativo"),
 ]

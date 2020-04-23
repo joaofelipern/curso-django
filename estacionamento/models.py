@@ -34,19 +34,29 @@ class MovRotativo(models.Model):
     veiculo = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
     pago = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name = 'Movimento Rotativo'
+
     def horas_total(self):
         import math
-        horas = (self.checkout - self.checkin).total_seconds() / 3600 # transformando segundos em horas
-        return math.ceil(horas) # arredonda hora para cima
+        if self.checkout:
+            horas = (self.checkout - self.checkin).total_seconds() / 3600 # transformando segundos em horas
+            return math.ceil(horas) # arredonda hora para cima
+        else:
+            return 0
 
     def valor(self):
         return self.valor_hora * self.horas_total()
 
     def __str__(self):
-        return self.veiculo.placa
+        return self.veiculo
 
-    class Meta:
-        verbose_name = 'Movimento Rotativo'
+    def save(self, *args, **kwargs):
+        self.valor_hora = 30
+        super(MovRotativo, self).__init__(*args, **kwargs)
+    
+
+    
 
 class Parametro(models.Model):
     valor_mes = models.DecimalField(max_digits=5, decimal_places=2)

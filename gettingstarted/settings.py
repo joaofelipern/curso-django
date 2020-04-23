@@ -116,6 +116,9 @@ SITE_TITLE = 'Controle de Estacionamento'
 SITE_HEADER = 'Controle de Estacionamento'
 INDEX_TITLE = 'Área Administrativa'
 
+#para testar o e-mail
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Marca, Pessoa, Veiculo, MovRotativo, Parametro, Mensalista, MovMensalista
-from .forms import MovRotativoForm
+from .forms import CheckinRotativoForm, CheckoutRotativoForm
 
 
 admin.site.register(Marca)
@@ -15,7 +15,11 @@ admin.site.register(MovMensalista, MovMensalistaAdmin)
 
 
 class MensalistaAdmin(admin.ModelAdmin):
-    list_display = ('veiculo', 'inicio', 'valor_mensal')
+    list_display = ('veiculo', '_proprietario', 'inicio', 'valor_mensal')
+
+    def _proprietario(self, obj):
+        return obj.veiculo.proprietario
+
 
 admin.site.register(Mensalista, MensalistaAdmin)
 
@@ -28,9 +32,10 @@ class MovRotativoAdmin(admin.ModelAdmin):
 
     # def get_form(self, request, obj=None, **kwargs):
     #     if obj is None:
-    #         return MovRotativoForm
+    #         return CheckinRotativoForm
     #     else:
-    #         return super(MovRotativoAdmin, self).get_form(request, obj, **kwargs)
+    #         return CheckoutRotativoForm
+    #     return super(MovRotativoAdmin, self).get_form(request, obj, **kwargs)
 
 admin.site.register(MovRotativo, MovRotativoAdmin)
 
